@@ -66,7 +66,6 @@ export default function Hero() {
             </svg>
           ))}
         </div>
-        <span>Dipercaya 40+ brand</span>
         <span className="divider" aria-hidden="true" />
         <span>Indonesia &amp; Asia</span>
       </div>
