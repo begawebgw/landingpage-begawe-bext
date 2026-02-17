@@ -1,7 +1,6 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Portfolio from "@/components/Portfolio";
-import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -11,7 +10,6 @@ export default function Home() {
       <main>
         <Hero />
         <Portfolio />
-        <CTA />
       </main>
       <Footer />
     </>
