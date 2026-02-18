@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
 import Nav from "@/components/Nav";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import { useRevealAnimation } from "@/lib/hooks";
 
 const services = [
   {
@@ -137,19 +137,7 @@ const stackItems = [
 ];
 
 export default function ServicesPage() {
-  useEffect(() => {
-    const els = document.querySelectorAll(".reveal");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) e.target.classList.add("visible");
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-    els.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+  useRevealAnimation();
 
   return (
     <>

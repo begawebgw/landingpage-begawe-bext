@@ -2,6 +2,8 @@
 
 import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { WHATSAPP_URL } from "@/lib/config";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -28,18 +30,21 @@ export default function Nav() {
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
 
-  const whatsappUrl = "https://wa.me/6285887799935";
+  const whatsappUrl = WHATSAPP_URL;
 
   return (
     <>
       <nav className={scrolled ? "scrolled" : ""}>
         {/* Logo */}
         <Link href="/" aria-label="Begawe — Home">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src="/logo.svg"
             alt="Begawe"
             className="logo"
+            width={120}
+            height={40}
+            priority
+            unoptimized
           />
         </Link>
 

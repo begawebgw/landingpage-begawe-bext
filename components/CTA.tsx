@@ -1,3 +1,5 @@
+import { WHATSAPP_URL } from "@/lib/config";
+
 export default function CTA() {
   return (
     <section className="cta">
@@ -54,7 +56,7 @@ export default function CTA() {
           Ceritakan proyek Anda dan tim kami akan segera merespons dalam 24 jam.
         </p>
         <a
-          href="https://wa.me/6285887799935"
+          href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="btn-glow"

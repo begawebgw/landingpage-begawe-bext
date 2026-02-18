@@ -1,3 +1,5 @@
+import { WHATSAPP_URL } from "@/lib/config";
+
 export default function Hero() {
   return (
     <section className="hero">
@@ -25,7 +27,7 @@ export default function Hero() {
       {/* CTA Buttons */}
       <div className="hero-cta-group reveal reveal-delay-3">
         <a
-          href="https://wa.me/6285887799935"
+          href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="btn-primary"

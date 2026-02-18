@@ -1,5 +1,8 @@
 "use client";
 
+import Image from "next/image";
+import { SOCIAL_LINKS } from "@/lib/config";
+
 export default function Footer() {
   const year = new Date().getFullYear();
 
@@ -7,11 +10,13 @@ export default function Footer() {
     <footer>
       <div className="footer-inner">
         <div className="footer-brand">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src="/logo.svg"
             alt="Begawe"
             className="footer-logo"
+            width={120}
+            height={40}
+            unoptimized
           />
           <p>
             Digital product studio yang membangun solusi teknologi berdampak
@@ -35,20 +40,16 @@ export default function Footer() {
 
         <div className="footer-col">
           <h4 style={{ fontFamily: "var(--font-display)" }}>Connect</h4>
-          <a
-            href="https://wa.me/6285887799935"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={SOCIAL_LINKS.whatsapp} target="_blank" rel="noopener noreferrer">
             WhatsApp
           </a>
-          <a href="https://instagram.com/begawe.bgw" target="_blank" rel="noopener noreferrer">
+          <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer">
             Instagram
           </a>
-          <a href="https://tiktok.com/@begawe.bgw" target="_blank" rel="noopener noreferrer">
+          <a href={SOCIAL_LINKS.tiktok} target="_blank" rel="noopener noreferrer">
             TikTok
           </a>
-          <a href="https://github.com/begawebgw" target="_blank" rel="noopener noreferrer">
+          <a href={SOCIAL_LINKS.github} target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
         </div>

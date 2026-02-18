@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Nav from "@/components/Nav";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import { useRevealAnimation } from "@/lib/hooks";
 
 const filters = [
   { key: "all", label: "Semua" },
@@ -79,20 +80,7 @@ const comingSoon = [
 
 export default function PortfolioPage() {
   const [activeFilter, setActiveFilter] = useState("all");
-
-  useEffect(() => {
-    const els = document.querySelectorAll(".reveal");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) e.target.classList.add("visible");
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-    els.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, [activeFilter]);
+  useRevealAnimation(activeFilter);
 
   const filtered = activeFilter === "all"
     ? comingSoon
