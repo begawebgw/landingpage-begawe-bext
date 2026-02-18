@@ -3,11 +3,14 @@
 import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { WHATSAPP_URL } from "@/lib/config";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -50,6 +53,11 @@ export default function Nav() {
 
         {/* Desktop links */}
         <ul className="nav-links-desktop">
+          {!isHome && (
+            <li>
+              <Link href="/">Home</Link>
+            </li>
+          )}
           <li>
             <Link href="/services">Services</Link>
           </li>
@@ -97,6 +105,11 @@ export default function Nav() {
         aria-modal="true"
         aria-label="Navigation menu"
       >
+        {!isHome && (
+          <Link href="/" onClick={closeMenu}>
+            Home
+          </Link>
+        )}
         <Link href="/services" onClick={closeMenu}>
           Services
         </Link>
