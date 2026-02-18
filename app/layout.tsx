@@ -21,30 +21,21 @@ export const metadata: Metadata = {
   title: "Begawe — Build Digital, Build Better",
   description:
     "Digital product studio yang membangun solusi teknologi berdampak untuk bisnis Indonesia.",
-  metadataBase: new URL("https://begawe.studio"),
+  metadataBase: new URL("https://landing-page-begawe-next.vercel.app"),
   openGraph: {
     title: "Begawe — Build Digital, Build Better",
     description:
       "Digital product studio yang membangun solusi teknologi berdampak untuk bisnis Indonesia.",
-    url: "https://begawe.studio",
+    url: "https://landing-page-begawe-next.vercel.app",
     siteName: "Begawe",
     locale: "id_ID",
     type: "website",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Begawe — Build Digital, Build Better",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Begawe — Build Digital, Build Better",
     description:
       "Digital product studio yang membangun solusi teknologi berdampak untuk bisnis Indonesia.",
-    images: ["/og-image.png"],
   },
 };
 
