@@ -20,48 +20,24 @@ const stats = [
   { value: "24/7", label: "Deadline mode, honestly" },
 ];
 
-const projects = [
-  {
-    id: "payease",
-    category: "mobile",
-    label: "Fintech",
-    title: "PayEase",
-    desc: "Aplikasi pembayaran digital dengan QRIS, transfer, dan top-up untuk 50K+ pengguna aktif di Indonesia.",
-    pills: ["Mobile App", "UI/UX", "Backend"],
-    techTags: ["React Native", "Node.js", "PostgreSQL"],
-    mockup: {
-      emoji: "💳",
-      sub: "Rp 0 Fee",
-      tags: ["QRIS", "Transfer", "TopUp"],
-      btn: "OPEN APP",
-      visClass: "vis-1",
-      activeTag: "Transfer",
-    },
-  },
-  {
-    id: "sehatku",
-    category: "web",
-    label: "Healthcare",
-    title: "SehatKu",
-    desc: "Platform telemedicine real-time yang terintegrasi dengan rekam medis digital untuk 200+ dokter.",
-    pills: ["Web App", "API", "Healthcare"],
-    techTags: ["Next.js", "PostgreSQL", "Supabase"],
-    mockup: {
-      emoji: "🏥",
-      sub: "24/7 Care",
-      tags: ["Consult", "Records", "Rx"],
-      btn: "BOOK NOW",
-      visClass: "vis-2",
-      activeTag: "Consult",
-    },
-  },
-];
-
 const comingSoon = [
+  {
+    id: "cs-mobile",
+    category: "mobile",
+    title: "Mobile App",
+    desc: "Sedang dalam pengerjaan. Stay tuned untuk update terbaru.",
+    pills: ["Mobile App", "2025"],
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="5" y="2" width="14" height="20" rx="2" />
+        <path d="M12 18h.01" />
+      </svg>
+    ),
+  },
   {
     id: "cs-web",
     category: "web",
-    title: "Project Baru",
+    title: "Web App",
     desc: "Sedang dalam pengerjaan. Stay tuned untuk update terbaru.",
     pills: ["Web App", "2025"],
     icon: (
@@ -72,37 +48,34 @@ const comingSoon = [
     ),
   },
   {
-    id: "cs-mobile",
-    category: "mobile",
-    title: "Project Baru",
+    id: "cs-design",
+    category: "design",
+    title: "UI/UX Design",
     desc: "Sedang dalam pengerjaan. Stay tuned untuk update terbaru.",
-    pills: ["Mobile App", "2025"],
+    pills: ["UI/UX", "2025"],
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="5" y="2" width="14" height="20" rx="2" />
-        <path d="M12 18h.01" />
+        <path d="M12 20h9" />
+        <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" />
+      </svg>
+    ),
+  },
+  {
+    id: "cs-ai",
+    category: "ai",
+    title: "AI Integration",
+    desc: "Sedang dalam pengerjaan. Stay tuned untuk update terbaru.",
+    pills: ["AI", "2025"],
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2a4 4 0 014 4v2a4 4 0 01-8 0V6a4 4 0 014-4z" />
+        <path d="M12 14v7M8 21h8" />
+        <path d="M5 10H3a1 1 0 000 2h2M19 10h2a1 1 0 010 2h-2" />
+        <circle cx="12" cy="12" r="2" />
       </svg>
     ),
   },
 ];
-
-const MockupNavIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-    <path d="M15 18l-6-6 6-6" />
-  </svg>
-);
-
-const MockupActionIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0" />
-  </svg>
-);
-
-const ArrowIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M7 17L17 7M17 7H7M17 7v10" />
-  </svg>
-);
 
 export default function PortfolioPage() {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -121,11 +94,7 @@ export default function PortfolioPage() {
     return () => observer.disconnect();
   }, [activeFilter]);
 
-  const filteredProjects = activeFilter === "all"
-    ? projects
-    : projects.filter((p) => p.category === activeFilter);
-
-  const filteredComingSoon = activeFilter === "all"
+  const filtered = activeFilter === "all"
     ? comingSoon
     : comingSoon.filter((p) => p.category === activeFilter);
 
@@ -161,7 +130,6 @@ export default function PortfolioPage() {
 
         {/* ── PROJECTS ── */}
         <section className="pf-projects-section">
-          {/* Header + Filters */}
           <div className="pf-projects-header reveal">
             <div>
               <div className="section-label">Selected Work</div>
@@ -181,66 +149,11 @@ export default function PortfolioPage() {
             ))}
           </div>
 
-          {/* Grid */}
           <div className="portfolio-grid pf-grid">
-            {filteredProjects.map((p, i) => (
-              <a
-                key={p.id}
-                href="#"
-                className={`portfolio-card reveal reveal-delay-${i + 1}`}
-              >
-                <div className="portfolio-tab">{p.label}</div>
-                <div className="portfolio-visual">
-                  <div className="portfolio-overlay" aria-hidden="true">
-                    <span className="portfolio-overlay-label">
-                      View Project
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M7 17L17 7M17 7H7M17 7v10" />
-                      </svg>
-                    </span>
-                  </div>
-                  <div className={`portfolio-visual-bg ${p.mockup.visClass}`} />
-                  <div className="portfolio-mockup">
-                    <div className="mockup-header">
-                      <div className="back-icon"><MockupNavIcon /></div>
-                      <div className="action-icon"><MockupActionIcon /></div>
-                    </div>
-                    <div className={`mockup-hero-img m-${i + 1}`}>{p.mockup.emoji}</div>
-                    <div className="mockup-title" style={{ fontFamily: "var(--font-display)" }}>{p.title}</div>
-                    <div className="mockup-price" style={{ fontFamily: "var(--font-display)" }}>{p.mockup.sub}</div>
-                    <div className="mockup-tags">
-                      {p.mockup.tags.map((t) => (
-                        <span key={t} className={`mockup-tag${t === p.mockup.activeTag ? " active" : ""}`}>{t}</span>
-                      ))}
-                    </div>
-                    <div className="mockup-btn" style={{ fontFamily: "var(--font-display)" }}>{p.mockup.btn}</div>
-                  </div>
-                </div>
-                <div className="portfolio-info">
-                  <div className="portfolio-meta">
-                    <h3 style={{ fontFamily: "var(--font-display)" }}>{p.title}</h3>
-                    <p>{p.desc}</p>
-                    <div className="portfolio-tags-row">
-                      {p.pills.map((pill) => (
-                        <span key={pill} className="portfolio-pill">{pill}</span>
-                      ))}
-                    </div>
-                    {/* Tech tags */}
-                    <div className="pf-tech-tags">
-                      {p.techTags.map((t) => (
-                        <span key={t} className="pf-tech-tag">{t}</span>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="portfolio-arrow"><ArrowIcon /></div>
-                </div>
-              </a>
-            ))}
-
-            {filteredComingSoon.map((p, i) => (
+            {filtered.map((p, i) => (
               <div
                 key={p.id}
-                className={`portfolio-card coming-soon reveal reveal-delay-${filteredProjects.length + i + 1}`}
+                className={`portfolio-card coming-soon reveal reveal-delay-${i + 1}`}
               >
                 <div className="coming-soon-visual">
                   <div className="coming-soon-icon">{p.icon}</div>
@@ -262,17 +175,6 @@ export default function PortfolioPage() {
                 </div>
               </div>
             ))}
-
-            {filteredProjects.length === 0 && filteredComingSoon.length === 0 && (
-              <div className="pf-empty reveal">
-                <div className="pf-empty-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" />
-                  </svg>
-                </div>
-                <p>Belum ada proyek di kategori ini. Coming soon!</p>
-              </div>
-            )}
           </div>
         </section>
 

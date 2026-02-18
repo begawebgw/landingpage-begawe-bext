@@ -31,7 +31,6 @@ export default function Footer() {
           <h4 style={{ fontFamily: "var(--font-display)" }}>Company</h4>
           <a href="/portfolio">Portofolio</a>
           <a href="/about">About</a>
-          <a href="#">Careers</a>
         </div>
 
         <div className="footer-col">
