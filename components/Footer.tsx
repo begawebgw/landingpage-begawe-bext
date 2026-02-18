@@ -1,10 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { SOCIAL_LINKS } from "@/lib/config";
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   return (
     <footer>
@@ -59,19 +63,35 @@ export default function Footer() {
         <span>
           &copy; {year} Begawe. All rights reserved.
         </span>
-        <a href="#" className="back-to-top" aria-label="Back to top">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M18 15l-6-6-6 6" />
-          </svg>
-          Back to top
-        </a>
+        {isHome ? (
+          <a href="#" className="back-to-top" aria-label="Back to top">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M18 15l-6-6-6 6" />
+            </svg>
+            Back to top
+          </a>
+        ) : (
+          <Link href="/" className="back-to-top" aria-label="Back to home">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M18 15l-6-6-6 6" />
+            </svg>
+            Back to home
+          </Link>
+        )}
         <span>Jakarta, Indonesia</span>
       </div>
     </footer>
