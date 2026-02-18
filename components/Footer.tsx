@@ -30,16 +30,16 @@ export default function Footer() {
 
         <div className="footer-col">
           <h4 style={{ fontFamily: "var(--font-display)" }}>Layanan</h4>
-          <a href="/services">Mobile Development</a>
-          <a href="/services">Web Application</a>
-          <a href="/services">UI/UX Design</a>
-          <a href="/services">AI Integration</a>
+          <Link href="/services">Mobile Development</Link>
+          <Link href="/services">Web Application</Link>
+          <Link href="/services">UI/UX Design</Link>
+          <Link href="/services">AI Integration</Link>
         </div>
 
         <div className="footer-col">
           <h4 style={{ fontFamily: "var(--font-display)" }}>Company</h4>
-          <a href="/portfolio">Portofolio</a>
-          <a href="/about">About</a>
+          <Link href="/portfolio">Portofolio</Link>
+          <Link href="/about">About</Link>
         </div>
 
         <div className="footer-col">
