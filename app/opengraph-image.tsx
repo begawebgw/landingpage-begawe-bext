@@ -5,7 +5,11 @@ export const alt = "Begawe — Build Digital, Build Better";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OgImage() {
+export default async function OgImage() {
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    "https://landing-page-begawe-next.vercel.app";
+
   return new ImageResponse(
     (
       <div
@@ -15,9 +19,8 @@ export default function OgImage() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          alignItems: "flex-start",
-          justifyContent: "flex-end",
-          padding: "80px",
+          alignItems: "center",
+          justifyContent: "center",
           position: "relative",
           fontFamily: "sans-serif",
         }}
@@ -33,105 +36,59 @@ export default function OgImage() {
           }}
         />
 
-        {/* Glow accent */}
+        {/* Green glow center */}
         <div
           style={{
             position: "absolute",
-            top: -200,
-            right: -200,
-            width: 600,
-            height: 600,
+            width: 700,
+            height: 700,
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(0,230,118,0.15) 0%, transparent 70%)",
+            background:
+              "radial-gradient(circle, rgba(0,230,118,0.08) 0%, transparent 65%)",
           }}
         />
 
-        {/* Badge */}
+        {/* Logo on white pill background */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
-            gap: 8,
-            background: "rgba(0,230,118,0.1)",
-            border: "1px solid rgba(0,230,118,0.3)",
-            borderRadius: 999,
-            padding: "8px 16px",
-            marginBottom: 32,
-          }}
-        >
-          <div
-            style={{
-              width: 8,
-              height: 8,
-              borderRadius: "50%",
-              background: "#00e676",
-            }}
-          />
-          <span style={{ color: "#00e676", fontSize: 18, fontWeight: 600 }}>
-            Available for Projects
-          </span>
-        </div>
-
-        {/* Title */}
-        <div
-          style={{
-            fontSize: 72,
-            fontWeight: 800,
-            color: "#ffffff",
-            lineHeight: 1.1,
-            marginBottom: 24,
-            letterSpacing: "-2px",
-          }}
-        >
-          Build Digital,{" "}
-          <span style={{ color: "#00e676" }}>Build Better</span>
-        </div>
-
-        {/* Description */}
-        <div
-          style={{
-            fontSize: 24,
-            color: "rgba(255,255,255,0.5)",
+            justifyContent: "center",
+            background: "#ffffff",
+            borderRadius: 24,
+            padding: "32px 64px",
             marginBottom: 48,
-            maxWidth: 700,
-            lineHeight: 1.5,
           }}
         >
-          Digital product studio yang membangun solusi teknologi berdampak
-          untuk bisnis Indonesia.
+          <img
+            src={`${siteUrl}/logo-begawe.svg`}
+            width={480}
+            height={320}
+            style={{ objectFit: "contain" }}
+          />
         </div>
 
-        {/* Footer */}
+        {/* Tagline */}
         <div
           style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            width: "100%",
-            borderTop: "1px solid rgba(255,255,255,0.08)",
-            paddingTop: 32,
+            fontSize: 28,
+            color: "rgba(255,255,255,0.55)",
+            letterSpacing: "0.02em",
+            marginBottom: 16,
           }}
         >
-          <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 20 }}>
-            begawe.studio
-          </span>
-          <div style={{ display: "flex", gap: 12 }}>
-            {["Mobile", "Web", "UI/UX", "AI"].map((tag) => (
-              <span
-                key={tag}
-                style={{
-                  background: "rgba(255,255,255,0.06)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  borderRadius: 8,
-                  padding: "6px 14px",
-                  color: "rgba(255,255,255,0.6)",
-                  fontSize: 18,
-                }}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
+          Build Digital, Build Better
+        </div>
+
+        {/* Domain */}
+        <div
+          style={{
+            fontSize: 18,
+            color: "rgba(0,230,118,0.7)",
+            letterSpacing: "0.05em",
+          }}
+        >
+          begawe.studio
         </div>
       </div>
     ),
