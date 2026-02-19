@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   title: "Begawe — Build Digital, Build Better",
   description:
     "Digital product studio yang membangun solusi teknologi berdampak untuk bisnis Indonesia.",
+  icons: {
+    icon: "/logo-link.png",
+    apple: "/logo-link.png",
+  },
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ||
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000")
