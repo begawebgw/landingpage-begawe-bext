@@ -52,11 +52,12 @@ export default async function OgImage() {
         <div
           style={{
             display: "flex",
+            flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
             background: "#ffffff",
             borderRadius: 24,
-            padding: "32px 64px",
+            padding: "32px 64px 40px",
             marginBottom: 48,
           }}
         >
@@ -66,6 +67,17 @@ export default async function OgImage() {
             height={320}
             style={{ objectFit: "contain" }}
           />
+          <div
+            style={{
+              fontSize: 20,
+              color: "rgba(0,0,0,0.4)",
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              marginTop: 8,
+            }}
+          >
+            Digital Product Studio
+          </div>
         </div>
 
         {/* Tagline */}
