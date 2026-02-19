@@ -33,12 +33,21 @@ export const metadata: Metadata = {
     siteName: "Begawe",
     locale: "id_ID",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Begawe — Digital Product Studio",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Begawe — Build Digital, Build Better",
     description:
       "Digital product studio yang membangun solusi teknologi berdampak untuk bisnis Indonesia.",
+    images: ["/og-image.png"],
   },
 };
 
