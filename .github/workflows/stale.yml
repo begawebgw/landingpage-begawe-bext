@@ -1,0 +1,28 @@
+name: Stale Issues & PRs
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Setiap hari tengah malam UTC
+
+jobs:
+  stale:
+    name: Mark Stale
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          stale-issue-message: >
+            Issue ini tidak ada aktivitas selama 30 hari dan akan ditutup dalam 7 hari jika tidak ada update.
+          stale-pr-message: >
+            PR ini tidak ada aktivitas selama 30 hari dan akan ditutup dalam 7 hari jika tidak ada update.
+          close-issue-message: >
+            Issue ini ditutup otomatis karena tidak ada aktivitas selama 37 hari.
+          close-pr-message: >
+            PR ini ditutup otomatis karena tidak ada aktivitas selama 37 hari.
+          days-before-stale: 30
+          days-before-close: 7
+          stale-issue-label: stale
+          stale-pr-label: stale
+          exempt-issue-labels: pinned,security
+          exempt-pr-labels: pinned,security

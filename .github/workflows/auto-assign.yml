@@ -1,0 +1,38 @@
+name: Auto Assign
+
+on:
+  pull_request:
+    types:
+      - opened
+      - ready_for_review
+
+jobs:
+  auto-assign:
+    name: Auto Assign Reviewer
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const prNumber = context.payload.pull_request.number;
+            const prAuthor = context.payload.pull_request.user.login;
+
+            // Assign PR author sebagai assignee
+            await github.rest.issues.addAssignees({
+              owner,
+              repo,
+              issue_number: prNumber,
+              assignees: [prAuthor]
+            });
+
+            // Request review dari owner repo (ganti dengan username reviewer)
+            const reviewer = owner;
+            if (reviewer !== prAuthor) {
+              await github.rest.pulls.requestReviewers({
+                owner,
+                repo,
+                pull_number: prNumber,
+                reviewers: [reviewer]
+              });
+            }
